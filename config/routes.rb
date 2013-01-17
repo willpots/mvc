@@ -1,4 +1,11 @@
 Mvc::Application.routes.draw do
+  get "news/home"
+
+  get "news/index"
+
+  get "news/article"
+
+  root :to => 'news#home'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
