@@ -1,0 +1,306 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+@import "bootstrap";
+
+
+// Styles
+.bold {
+	font-weight: bold;
+}
+// Colors
+.c1 {
+	background: rgb(232, 108, 31);
+}
+.c2 {
+	background: rgb(0, 102, 51);
+}
+.c3 {
+	background: rgb(102, 153, 102);
+}
+.c4 {
+	background: rgb(175, 148, 0);
+}
+.c5 {
+	background: rgb(91, 0, 134);
+}
+.c6 {
+	background: rgb(102, 0, 51);
+}
+.c7 {
+	background: rgb(4, 66, 75);
+}
+.c8 {
+	background: rgb(51, 51, 102);
+}
+.c9 {
+	background: rgb(153, 51, 51);
+}
+.c10 {
+	background: rgb(24, 71, 128);
+}
+.c11 {
+	background: rgb(24, 71, 128);
+}
+.c1  {background-color: #e86c1f; color:#fff; }
+.c2  {background-color: #006633; color:#fff; }
+.c3  {background-color: #af9400; color:#fff; }
+.c4  {background-color: #669966; color:#fff; }
+.c5  {background-color: #5b0086; color:#fff; }
+.c6  {background-color: #660033; color:#fff; }
+.c7  {background-color: #04424b; color:#fff; }
+.c8  {background-color: #333366; color:#fff; }
+.c9  {background-color: #993333; color:#fff; }
+.c10 {background-color: #993300; color:#fff; }
+.c11 {background-color: #184780; color:#fff; }
+.c12 {background-color: #669933; color:#fff; }
+.c13 {background-color: #663333; color:#fff; }
+.c14 {background-color: #0a6c4f; color:#fff; }
+.c15 {background-color: #78a12e; color:#fff; }
+.c16 {background-color: #00919e; color:#fff; }
+
+html, body {
+
+}
+
+body {
+	background:rgb(7, 20, 39) url(https://web.middlebury.edu/development/tools/1d2010/Images/bluegradient.jpg) no-repeat center top;
+}
+
+
+
+header.main {
+	.login {
+		float: right;
+		a {
+			color: white;
+		}
+	}
+	h1 {
+		a {
+			color:white;
+		}
+		font-weight: 500;
+	}
+}
+#main {
+	.row {
+
+	}
+	.navbar {
+		.navbar-inner {
+			border-radius: 0;
+		}
+	}
+}
+.btn {
+	border-radius: 0;
+}
+.article {
+	border:1px solid rgba(255,255,255,0.2);
+	padding: 10px;
+	margin:10px;
+	.article-header {
+		a {
+			color: inherit;
+		}
+	}
+	.article-author {
+		a {
+			color:black;
+		}
+		margin:5px 0px;
+		font-size: 14px;
+	}
+	.article-description {
+
+	}
+}
+.main-article {
+	background:white;
+	.article-header {
+		padding:10px;
+		a {
+			color: inherit;
+		}
+	}
+	.article-author {
+		padding:0 10px;
+		a {
+			color:black;
+		}
+		margin:5px 0px;
+		font-size: 14px;
+	}
+	.article-description {
+		padding:10px;
+		img.right {
+			float:right;
+			margin-left: 5px;
+			margin-bottom: 5px;
+		}
+		img.left {
+			float:left;
+			margin-right: 5px;
+			margin-bottom: 5px;
+		}
+	}
+	.article-meta {
+		padding:10px;
+		ul {
+			display:inline;
+
+			li {
+				display:inline;
+
+				a {
+
+				}
+			}
+		}
+	}
+}
+
+ul.no-style {
+	list-style: none;
+}
+.db-home {
+
+	.span4, .span3 {
+		background:white;
+		min-height: 300px;
+
+		h4 {
+			padding: 0 10px;
+		}
+	}
+
+}
+.db-company {
+	background: white;
+	margin:0;
+	.span12 {
+		.page-image {
+			float: right;
+			padding: 5px 25px;
+			img {
+				height: 60px;
+				width: auto;
+			}
+		}
+	}
+	.span4, .span3 {
+		h4 {
+			border-bottom:1pt solid black;
+		}
+		font-size: 12px;
+		table {
+			tr {
+				padding: 0px;
+				td {
+					padding: 0px 2px;
+				}
+			}
+		}
+	}
+}
+.login-page {
+	margin:0;
+	.span12 {
+		margin:0 auto;
+		background: white;
+		height: 300px;
+		text-align: center;
+		.control-group {
+
+			.help-inline {
+				display: none;
+			}
+			&.error, &.warning {
+				.help-inline {
+					display: inline;
+				}
+			}
+		}
+	}
+}
+.create-article-page {
+	margin:0;
+	.span12 {
+		margin:0 auto;
+		background: white;
+		text-align: left;
+		h2, h4, div, p {
+			padding:0 20px;
+			margin:10px 0;
+		}
+		.control-group {
+			.controls {
+				margin:0;
+				padding:0;
+				&.body-controls:hover {
+					.help-inline {
+						display: inline;
+					}
+				}
+				#title {
+					font-size: 20px;
+					padding:10px;
+					border-radius: 0;
+					width:390px;
+				}
+				#body {
+					border-radius: 0;
+					width:400px;
+					height:300px;
+				}
+			}
+			.help-inline {
+				display: none;
+			}
+			&.error, &.warning {
+				.help-inline {
+					display: inline;
+				}
+			}
+		}
+	}
+}
+.row.edit-company {
+	background: white;
+	margin:0;
+
+
+}
+.contribute {
+	text-align: center;
+	ul {
+		margin:0;
+		padding:0;
+		li {
+			padding:10px 0;
+			a {
+
+			}
+		}
+	}
+}
+footer.main {
+	text-align: center;
+	padding:20px;
+	color:white;
+}
+.clear {
+	display: block;
+	clear: both;
+}

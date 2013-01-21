@@ -1,2 +1,28 @@
-<h1>News#home</h1>
-<p>Find me in app/views/news/home.html.erb</p>
+<% i = 1 %>
+<% @articles.each do |a| %>
+
+<% if i % 2 == 1 %>
+	<div class="row">
+<% end %>
+
+<div class="span6">
+	<div class="article row c<%= i %>">
+		<h3 class="article-header"><a href="article/<%= a.id %>"><%= a.title %></a></h3>
+		<div class="article-author">
+			<a href="#"><%= a.person.first_name + " " + a.person.last_name %></a>
+		</div>
+		<div class="article-description">
+			<%= text = ActionView::Base.full_sanitizer.sanitize(a.body[0..400]) %>
+
+		</div>
+	</div>
+</div>
+
+
+
+<% if i % 2 == 0 %>
+	</div>
+<% end %>
+<% i += 1 %>
+
+<% end %>

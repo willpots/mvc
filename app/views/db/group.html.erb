@@ -1,0 +1,135 @@
+<div class="db-company row">
+
+	<div class="span12">
+		<div class="page-image">
+			<img src="http://www.crunchbase.com/assets/images/resized/0019/7996/197996v2-max-250x250.png" alt="Strabo" height="20"></div>
+		<h2><%= @group.name %></h2>
+	</div>
+</div>
+<div class="db-company row">
+	<div class="span3 details">
+		<h4>Details</h4>
+		<table>
+			<% if @group.website != "" %>
+			<tr>
+				<td>Website</td>
+				<td>
+					<a href="<%= @group.website %>" target="_self" title="strabogis.com"><%= @group.website %></a>
+				</td>
+			</tr>
+			<% end %>
+			<% if @group.twitter_id != "" %>
+			<tr>
+				<td>Twitter</td>
+				<td>
+					<a href="http://twitter.com/<%= @group.twitter_id %>" rel="nofollow"><%= @group.twitter_id %></a>
+				</td>
+			</tr>
+			<% end %>
+			<% if @group.phone != "" %>
+			<tr>
+				<td>Phone</td>
+				<td><%= @group.phone %></td>
+			</tr>
+			<% end %>
+			<% if @group.email != "" %>
+			<tr>
+				<td>Email</td>
+				<td>
+					<a href="mailto:<%= @group.email %>" rel="nofollow" title="<%= @group.email %>"><%= @group.email %></a>
+				</td>
+			</tr>
+			<% end %>
+			<% if @group.founded != "" %>
+			<tr>
+				<td>Founded</td>
+				<td>5/11</td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+	<div class="span4">
+		<h4>Description</h4>
+		<p><%= @group.description %></p>
+	</div>
+	<div class="span4">
+		<h4>Middlebury Activity</h4>
+		<table>
+			<% if @group.middstart != "" %>
+			<tr>
+				<td>
+					<a href="http://go.middlebury.edu/middstart" target="_blank"><img src="/assets/middstart.jpg" alt="MiddStart" height="10" style="height:18px;"></a>
+				</td>
+				<td><%= @group.middstart %></td>
+			</tr>
+			<% end %>
+			<% if @group.millenium_interns != "" %>
+			<tr>
+				<td>
+					<a href="http://www.middlebury.edu/studentlife/eia/internships" target="_blank">Millenium Fund Interns</a>
+				</td>
+				<td><%= @group.millenium_interns %></td>
+			</tr>
+			<% end %>
+			<% if @group.vcet != "" %>
+			<tr>
+				<td><a href="http://vermonttechnologies.com" target="_blank">VCET</a></td>
+				<td><%= @group.vcet %></td>
+			</tr>
+			<% end %>
+			<% if @group.operations_in_midd != "" %>
+			<tr>
+				<td>Operation in Middlebury</td>
+				<td><%= @group.operations_in_midd %></td>
+			</tr>
+			<% end %>
+			<% if @group.midd_employees != "" %>
+			<tr>
+				<td>Middlebury Employees</td>
+				<td><%= @group.midd_employees %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
+<div class="db-company row">
+	<div class="span3">
+		<h4>People</h4>
+		<table>
+			<tr>
+				<td>
+					<a href="#">Will Potter</a>
+				</td>
+				<td>Co-Founder/Director of Web Development</td>
+				<td>'14.5</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#">Nate Beatty</a>
+				</td>
+				<td>Co-Founder/Director of Mobile Development</td>
+				<td>'13.5</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#">Parker Woodworth</a>
+				</td>
+				<td>Co-Founder/Creative Director</td>
+				<td>'13.5</td>
+			</tr>
+		</table>
+	</div>
+	<div class="span4">
+		<h4>Video</h4>
+		<iframe width="300" height="240" src="http://www.youtube.com/embed/ScMzIvxBSi4?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+	</div>
+	<div class="span4">
+		<h4>News</h4>
+
+	</div>
+</div>
+<div class="db-company row">
+	<div class="span12">
+		<a href="/group/<%= @group.id %>/edit" class="btn">Edit Page</a>
+	</div>
+</div>

@@ -1,2 +1,20 @@
-<h1>News#article</h1>
-<p>Find me in app/views/news/article.html.erb</p>
+<div class="row">
+	<div class="main-article span12">
+		<h3 class="article-header">
+			<a href="article.html"><%= @article.title %></a>
+		</h3>
+		<div class="article-author">
+			<a href="author.html"><%= @article.person.first_name + " " + @article.person.last_name %></a>
+		</div>
+		<div class="article-description">
+			<%= @article.body.html_safe %>				
+		</div>
+		<div class="article-meta">
+			<span class="bold">Tags:</span>
+			<ul>
+				<li><a class="btn" href="company.html">Strabo</a></li>
+				<li><a class="btn" href="#">Will Potter</a></li>
+			</ul>
+		</div>
+	</div>
+</div>

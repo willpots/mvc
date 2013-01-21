@@ -1,0 +1,53 @@
+<div class="row edit-company">
+	<div class="span12">
+		<%= form_for @group, :url => { :action => "update_group" }, :html => {:class => "nifty_form"} do |f| %>
+			<h2>Edit <%= f.text_field :name %></h2>
+ <% if @group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+      <% @group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  			<h4>Details</h4>
+			<p>
+				<%= f.text_field :website, :placeholder => "http://www.example.com" %>
+				<%= f.text_field :email, :placeholder => "support@example.com" %>
+				<%= f.text_field :phone, :placeholder => "800-555-1232" %>
+				Twitter: @<%= f.text_field :twitter_id, :placeholder => "Twitter @username", :style =>"width:100px;" %>
+			</p>
+			<h4>Address</h4>
+			<p>
+				<%= f.text_field :address, :placeholder => "Address", :style =>"width:350px;" %>
+				<%= f.text_field :city, :placeholder => "City" %>
+				<%= f.text_field :state, :placeholder => "State (ex. VT)", :style =>"width:30px;", :maxlength => "2" %>
+				<%= f.text_field :zip, :placeholder => "Zip Code", :style =>"width:50px;", :maxlength => "5" %>
+			</p>
+			<h4>Middlebury Involvement</h4>
+			<p>
+				MiddStart Funding: <%= f.text_field :middstart, :placeholder => "", :style =>"width:50px;" %>
+				Millenium Interns: <%= f.text_field :millenium_interns, :placeholder => "", :style =>"width:30px;", :maxlength => "3" %>
+				Years of Operating in Midd: <%= f.text_field :operations_in_midd, :placeholder => "", :style =>"width:100px;" %>
+				Midd Employees: <%= f.text_field :midd_employees, :placeholder => "", :style =>"width:30px;", :maxlength => "3" %>
+			</p>
+			<p>
+				VCET Involvement: <%= f.text_field :vcet, :placeholder => "" , :style => "width:400px;" %>
+
+			</p>
+			<p>
+				<%= f.text_field :video, :placeholder => "Youtube or Vimeo URI" %>				
+			</p>
+			<p><%= f.text_area :description , :rows => "10", :style =>"width:800px;"%></p>
+			<p><%= f.submit "Create", :class => "btn" %></p>
+
+
+
+			 <!-- type: string phone: string, founded: string, : string, : string, vcet: string, : string, : string -->
+		<% end %>
+		<div class="clear"></div>
+	</div>
+</div>

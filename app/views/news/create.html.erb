@@ -1,0 +1,23 @@
+<div class="create-article-page row">
+	<div class="span12">
+		<h2>Publish</h2>
+		<%= form_tag("/article/insert", :method => "post") do %>
+		<div class="control-group ">
+			<div class="controls">
+				<input type="text" id="title" name="title" placeholder="Title">
+				<div class="help-inline">Title</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls body-controls">
+				<textarea id="body" name="body" placeholder="Article Body"></textarea>
+				<div class="help-inline">Feel free to include standard HTML tags</div>
+			</div>
+		</div>
+		<div class="control-group ">
+			<input type="submit" name="Publish" class="btn">
+		</div>
+		<% end %>
+		<div class="clear"></div>
+	</div>
+</div>

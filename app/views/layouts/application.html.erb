@@ -1,14 +1,41 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="en-US">
 <head>
-  <title>Midd Venture Community</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
+	<meta charset="UTF-8">
+	<title>Midd Venture Community</title>
+	<%= stylesheet_link_tag    "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+
 <body>
+	<div class="container">
+		<header class="main">
+			<div class="login">
+				<a href="/login">Login</a>
+			</div>
+			<h1><a href="/">midd venture community</a></h1>
+		</header>
+		<div id="main">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<ul class="nav">
+						<li class="active">
+							<a href="/">Home</a>
+						</li>
+						<li class="not-active">
+							<a href="/community">Database</a>
+						</li>
+					</ul>
+				</div>
+			</div>
 
-<%= yield %>
+			<%= yield %>
 
+
+		</div>
+		<footer class="main">
+			&copy; 2013, Midd Venture Community	
+		</footer>
+	</div>
 </body>
 </html>
