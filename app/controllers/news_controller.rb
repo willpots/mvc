@@ -13,6 +13,8 @@ class NewsController < ApplicationController
   end
 
   def create
+    @groups = Group.all
+    @people = Person.all
 
 
   end

@@ -254,27 +254,29 @@ ul.no-style {
 				padding:0;
 				&.body-controls:hover {
 					.help-inline {
-						display: inline;
+						display: inline-block;
 					}
 				}
 				#title {
 					font-size: 20px;
 					padding:10px;
 					border-radius: 0;
-					width:390px;
+					width:590px;
 				}
 				#body {
 					border-radius: 0;
-					width:400px;
+					width:600px;
 					height:300px;
 				}
 			}
 			.help-inline {
 				display: none;
+				width:150px;
+				border:1pt solid #faa;
 			}
 			&.error, &.warning {
 				.help-inline {
-					display: inline;
+					display: inline-block;
 				}
 			}
 		}

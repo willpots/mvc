@@ -4,7 +4,7 @@
 			<a href="article.html"><%= @article.title %></a>
 		</h3>
 		<div class="article-author">
-			<a href="author.html"><%= @article.person.first_name + " " + @article.person.last_name %></a>
+			<a href="/person/<%= @article.person.id %>"><%= @article.person.first_name + " " + @article.person.last_name %></a>
 		</div>
 		<div class="article-description">
 			<%= @article.body.html_safe %>				
@@ -12,8 +12,13 @@
 		<div class="article-meta">
 			<span class="bold">Tags:</span>
 			<ul>
-				<li><a class="btn" href="company.html">Strabo</a></li>
-				<li><a class="btn" href="#">Will Potter</a></li>
+			<% @article.references.each do |r| %>
+				<% if r.person %>
+				<li><a class="btn" href="/person/<%= r.person.id %>"><%= r.person.first_name %> <%= r.person.last_name %></a></li>
+				<% elsif r.group %>
+				<li><a class="btn" href="/group/<%= r.group.id %>"><%= r.group.name %></a></li>
+				<% end %>
+			<% end %>
 			</ul>
 		</div>
 	</div>

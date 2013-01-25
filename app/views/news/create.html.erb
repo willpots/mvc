@@ -14,6 +14,17 @@
 				<div class="help-inline">Feel free to include standard HTML tags</div>
 			</div>
 		</div>
+		<h4>References</h4>
+        <select data-placeholder="Add People" class="chzn-select" id="persons" name="persons" multiple style="width:350px;">
+        	<% @people.each do |p| %>
+        	<option value="<%= p.id %>"><%= p.first_name %> <%= p.last_name %></option>
+        	<% end %>
+        </select>
+        <select data-placeholder="Add Groups" class="chzn-select" id="groups" name="groups" multiple style="width:350px;">
+        	<% @groups.each do |g| %>
+        	<option value="<%= g.id %>"><%= g.name %></option>
+        	<% end %>
+        </select>
 		<div class="control-group ">
 			<input type="submit" name="Publish" class="btn">
 		</div>

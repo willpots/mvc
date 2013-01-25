@@ -27,10 +27,10 @@
 	<div class="span4">
 		<h4>Organizations/Companies</h4>
 		<table>
-			<% @person.groups.each do |p| %>
+			<% @person.connections.each do |c| %>
 			<tr>
 				<td>
-					<a href="#"><%= p.name %></a>
+					<%= c.role %> at <a href="/group/<%= c.group.id %>"><%= c.group.name %></a> (<%= c.start_date.to_s %> to <%= c.end_date.to_s %>)
 				</td>
 			</tr>
 			<% end %>
@@ -40,7 +40,13 @@
 <div class="db-company row">
 	<div class="span4">
 		<h4>News</h4>
+		<ul>
+		<% @person.references.each do |r| %>
 
+			<li><a href="/article/<%= r.article.id %>"><%= r.article.title %></a></li>
+
+		<% end %>
+		</ul>
 	</div>
 </div>
 <div class="db-company row">

@@ -130,7 +130,13 @@
 	</div>
 	<div class="span4">
 		<h4>News</h4>
+		<ul>
+		<% @person.references.each do |r| %>
 
+			<li><a href="/article/<%= r.article.id %>"><%= r.article.title %></a></li>
+
+		<% end %>
+		</ul>
 	</div>
 </div>
 

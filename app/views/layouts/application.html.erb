@@ -23,12 +23,17 @@
 			<div class="navbar">
 				<div class="navbar-inner">
 					<ul class="nav">
-						<li class="active">
+						<li class="<%= @news_link %>">
 							<a href="/">Home</a>
 						</li>
-						<li class="not-active">
+						<li class="<%= @db_link %>">
 							<a href="/community">Database</a>
 						</li>
+						<% if @user and @user.author %>
+						<li class="<%= @create_link %>">
+							<a href="/article/create">Write a Post</a>
+						</li>
+						<% end %>
 					</ul>
 				</div>
 			</div>
