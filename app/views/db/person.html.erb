@@ -1,2 +1,50 @@
-<h1><%= @person.first_name %> <%= @person.last_name %></h1>
-<p><%= @person.email %></p>
+<div class="db-company row">
+
+	<div class="span12">
+		<div class="page-image">
+			<img src="http://www.crunchbase.com/assets/images/resized/0019/7996/197996v2-max-250x250.png" alt="Strabo" height="20"></div>
+		<h2><%= @person.first_name %> <%= @person.last_name %></h2>
+	</div>
+</div>
+<div class="db-company row">
+	<div class="span3 details">
+		<h4>Details</h4>
+		<table>
+			<% if @person.title != "" %>
+			<tr>
+				<td>Position</td>
+				<td>
+					<%= @person.title %>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+	<div class="span4">
+		<h4>Description</h4>
+		<p><%= @person.description %></p>
+	</div>
+	<div class="span4">
+		<h4>Organizations/Companies</h4>
+		<table>
+			<% @person.groups.each do |p| %>
+			<tr>
+				<td>
+					<a href="#"><%= p.name %></a>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
+<div class="db-company row">
+	<div class="span4">
+		<h4>News</h4>
+
+	</div>
+</div>
+<div class="db-company row">
+	<div class="span12">
+		<a href="/group/<%= @person.id %>/edit" class="btn">Edit Page</a>
+	</div>
+</div>

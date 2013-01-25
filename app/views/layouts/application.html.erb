@@ -11,7 +11,11 @@
 	<div class="container">
 		<header class="main">
 			<div class="login">
+				<% if !session[:user] %>
 				<a href="/login">Login</a>
+				<% else %>
+				Hello, <%= @user.first_name %> &nbsp;&nbsp;&nbsp;<a href="/logout">Logout</a>
+				<% end %>
 			</div>
 			<h1><a href="/">midd venture community</a></h1>
 		</header>
@@ -37,5 +41,8 @@
 			&copy; 2013, Midd Venture Community	
 		</footer>
 	</div>
+
+	  <script type="text/javascript"> $(".chzn-select").chosen(); $(".chzn-select-deselect").chosen({allow_single_deselect:true}); </script>
+
 </body>
 </html>

@@ -1,21 +1,24 @@
 <div class="login-page row">
 	<div class="span12">
 		<h2>Log In/Sign Up</h2>
+		<%= form_tag("/check", :method => "post") do %>
 		<div class="control-group ">
 			<div class="controls">
-				<input type="text" id="usernameField" placeholder="Username/Email">
-				<div class="help-inline">Username Does Not Exist/Is Invalid</div>
+				<input type="text" id="username" name="username" placeholder="Email">
+				<div class="help-inline">Email is Invalid</div>
 			</div>
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<input type="password" id="passwordField" placeholder="Password">
+				<input type="password" id="password" name="password" placeholder="Password">
 				<div class="help-inline">Incorrect/Invalid Password</div>
 			</div>
 		</div>
-		<h4>- or -</h4>
+		<%= submit_tag("Login") %>
+		<% end %>
+<!-- 		<h4>- or -</h4>
 		<div class="linked-in-login">
 			<img src="/assets/linkedin_signin_button.png" alt="Login With Linked In">
 		</div>
 	</div>
-</div>
+ --></div>

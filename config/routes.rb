@@ -1,7 +1,8 @@
 Mvc::Application.routes.draw do
   match "login" => "login#login"
 
-  get "login/validate"
+  match "/check" => "login#validate"
+  match "/logout" => "login#logout"
   get "login/register"
   get "login/create"
 

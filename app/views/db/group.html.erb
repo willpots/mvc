@@ -2,14 +2,27 @@
 
 	<div class="span12">
 		<div class="page-image">
-			<img src="http://www.crunchbase.com/assets/images/resized/0019/7996/197996v2-max-250x250.png" alt="Strabo" height="20"></div>
+			<img src="http://www.crunchbase.com/assets/images/resized/0019/7996/197996v2-max-250x250.png" alt="Strabo" height="20">
+		</div>
 		<h2><%= @group.name %></h2>
+		<% if @user %>
+			<a href="/group/<%= @group.id %>/edit" class="btn">Edit Page</a>
+		<% end %>
+
 	</div>
 </div>
 <div class="db-company row">
 	<div class="span3 details">
 		<h4>Details</h4>
 		<table>
+			<% if @group.type != "" %>
+			<tr>
+				<td>Category</td>
+				<td>
+					<%= @group.type %>
+				</td>
+			</tr>
+			<% end %>
 			<% if @group.website != "" %>
 			<tr>
 				<td>Website</td>
@@ -96,40 +109,28 @@
 	<div class="span3">
 		<h4>People</h4>
 		<table>
+			<% @group.persons.each do |p| %>
 			<tr>
 				<td>
-					<a href="#">Will Potter</a>
+					<a href="#"><%= p.first_name %> <%= p.last_name%></a>
 				</td>
-				<td>Co-Founder/Director of Web Development</td>
-				<td>'14.5</td>
+				<td><%= p.title %></td>
+				<td><%= p.class_year %></td>
 			</tr>
-			<tr>
-				<td>
-					<a href="#">Nate Beatty</a>
-				</td>
-				<td>Co-Founder/Director of Mobile Development</td>
-				<td>'13.5</td>
-			</tr>
-			<tr>
-				<td>
-					<a href="#">Parker Woodworth</a>
-				</td>
-				<td>Co-Founder/Creative Director</td>
-				<td>'13.5</td>
-			</tr>
+			<% end %>
 		</table>
 	</div>
 	<div class="span4">
 		<h4>Video</h4>
-		<iframe width="300" height="240" src="http://www.youtube.com/embed/ScMzIvxBSi4?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+		<% if @group.video.nil? %>
+		<p>No video has been uploaded</p>
+		<% else %>
+		<iframe width="300" height="240" src="<%= @group.video %>" frameborder="0" allowfullscreen></iframe>
+		<% end %>
 	</div>
 	<div class="span4">
 		<h4>News</h4>
 
 	</div>
 </div>
-<div class="db-company row">
-	<div class="span12">
-		<a href="/group/<%= @group.id %>/edit" class="btn">Edit Page</a>
-	</div>
-</div>
+

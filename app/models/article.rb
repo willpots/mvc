@@ -3,4 +3,7 @@ class Article < ActiveRecord::Base
 
   belongs_to :person
   
+  has_many :persons, :through => :reference
+  has_many :groups, :through => :reference
+  
 end

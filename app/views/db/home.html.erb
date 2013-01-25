@@ -1,2 +1,20 @@
-<h1>Db#home</h1>
-<p>Find me in app/views/db/home.html.erb</p>
+<div class="db-company row">
+	<div class="span12">
+		<h2>Groups</h2>
+		<ul>
+		<% @groups.each do |g| %>
+		<li><a href="/group/<%= g.id %>"><%= g.name %></a></li>
+		<% end %>
+	
+		</ul>
+
+		<h2>People</h2>
+		<ul>
+		<% @people.each do |g| %>
+		<li><a href="/person/<%= g.id %>"><%= g.first_name %> <%= g.last_name %></a></li>
+		<% end %>
+	
+		</ul>
+
+	</div>
+</div>
