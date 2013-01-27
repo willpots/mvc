@@ -1,7 +1,7 @@
 <div class="row edit-company">
 	<div class="span12">
-		<%= form_for @group, :url => { :action => "update_group" }, :html => {:class => "nifty_form"} do |f| %>
-			<h2>Edit <%= f.text_field :name %></h2>
+		<%= form_for @group, :url => { :action => "create_group" }, :html => {:class => "nifty_form"} do |f| %>
+			<h2>Edit <%= f.text_field :name, :placeholder => "Group Name" %></h2>
  <% if @group.errors.any? %>
     <div id="error_explanation">
       <h5><%= pluralize(@group.errors.count, "error") %> prohibited this page from being saved:</h5>
@@ -56,9 +56,6 @@
 			</p>
 
 			<p><%= f.submit "Create", :class => "btn" %></p>
-
-
-			 <!-- type: string phone: string, founded: string, : string, : string, vcet: string, : string, : string -->
 		<% end %>
 		<div class="clear"></div>
 	</div>

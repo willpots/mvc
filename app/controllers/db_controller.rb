@@ -1,7 +1,7 @@
 class DbController < ApplicationController
   def home
-  	@groups = Group.all
-  	@people = Person.all
+    @groups = Group.order("name ASC")
+    @people = Person.order("last_name ASC")
   end
 
   def group
@@ -16,26 +16,52 @@ class DbController < ApplicationController
     @group = Group.find(params[:id])
     @people = Person.all
   end
+  def new_group
+    @group = Group.new
+    @people = Person.all
+
+  end
   def create_group
+    @people = Person.all
     if params[:group]
       @group = Group.new(params[:group])
       if @group.save
+        @group.connections.each do |c|
+          c.destroy
+        end
+        params[:persons].each do |a|
+          con = Connection.new
+          con.group_id = @group.id
+          con.person_id = a
+          con.save
+        end
+
+
         redirect_to "/group/"+@group.id.to_s
       else
-        redirect_to "/group/"+@group.id.to_s+"/edit"
+        render "new_group"
       end
     end
   end
+
   def update_group
+    @people = Person.all
     if params[:group]
       @group = Group.find(params[:id])
       if @group.update_attributes params[:group]
+        params[:persons].each do |a|
+          con = Connection.new
+          con.group_id = @group.id
+          con.person_id = a
+          con.save
+        end
         redirect_to "/group/"+@group.id.to_s
       else
-        redirect_to "/group/"+@group.id.to_s+"/edit"
+        render "edit_group"
       end
     end
   end
+
   def edit_person
 
 

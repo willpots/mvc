@@ -2,8 +2,11 @@
 
 	<div class="span12">
 		<div class="page-image">
-			<img src="http://www.crunchbase.com/assets/images/resized/0019/7996/197996v2-max-250x250.png" alt="Strabo" height="20"></div>
+			<!-- <img src="http://www.crunchbase.com/assets/images/resized/0019/7996/197996v2-max-250x250.png" alt="Strabo" height="20"></div> -->
 		<h2><%= @person.first_name %> <%= @person.last_name %></h2>
+		<% if @user %>
+			<a href="/person/<%= @person.id %>/edit" class="btn">Edit Page</a>
+		<% end %>
 	</div>
 </div>
 <div class="db-company row">
@@ -12,9 +15,9 @@
 		<table>
 			<% if @person.title != "" %>
 			<tr>
-				<td>Position</td>
 				<td>
-					<%= @person.title %>
+					<%= @person.connections.last.role or "Worked" %> at 
+					<a href="/group/<%= @person.connections.last.group.id %>"><%= @person.connections.last.group.name %></a>
 				</td>
 			</tr>
 			<% end %>
@@ -30,7 +33,14 @@
 			<% @person.connections.each do |c| %>
 			<tr>
 				<td>
-					<%= c.role %> at <a href="/group/<%= c.group.id %>"><%= c.group.name %></a> (<%= c.start_date.to_s %> to <%= c.end_date.to_s %>)
+					<% if c.role == nil %>
+					<% c.role = "Worked " %>
+					<% end %>
+					<% if c.start_date and c.end_date %>
+					<%= c.role %> at <a href="/group/<%= c.group.id %>"><%= c.group.name %></a> (<%= c.start_date.to_date.mon %>-<%= c.start_date.to_date.year %> to <%= c.end_date.to_date.mon %>-<%= c.end_date.to_date.year %>)
+					<% else %>
+					<%= c.role %> at <a href="/group/<%= c.group.id %>"><%= c.group.name %></a>
+					<% end %>
 				</td>
 			</tr>
 			<% end %>
@@ -38,10 +48,22 @@
 	</div>
 </div>
 <div class="db-company row">
+	<% if @person.author %>
 	<div class="span4">
-		<h4>News</h4>
+		<h4>Articles</h4>
 		<ul>
-		<% @person.references.each do |r| %>
+		<% @person.articles.reverse.each do |a| %>
+
+			<li><a href="/article/<%= a.id %>"><%= a.title %></a></li>
+
+		<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div class="span4">
+		<h4>In The News</h4>
+		<ul>
+		<% @person.references.reverse.each do |r| %>
 
 			<li><a href="/article/<%= r.article.id %>"><%= r.article.title %></a></li>
 
@@ -50,7 +72,5 @@
 	</div>
 </div>
 <div class="db-company row">
-	<div class="span12">
-		<a href="/group/<%= @person.id %>/edit" class="btn">Edit Page</a>
-	</div>
+
 </div>
