@@ -19,7 +19,6 @@ class NewsController < ApplicationController
 
   end
   def delete 
-    logger.debug @user
     if params[:id] and @user and @user.author
       @article = Article.find(params[:id])
       @article.destroy
