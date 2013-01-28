@@ -24,6 +24,11 @@
 				</td>
 			</tr>
 			<% end %>
+			<% if !@person.twitter %>
+				<td>
+					<a href="http://twitter.com/<%= @person.twitter %>" target="_blank">@<%= @person.twitter %></a>
+				</td>
+			<% end %>
 		</table>
 	</div>
 	<div class="span4">
