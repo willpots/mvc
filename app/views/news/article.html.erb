@@ -1,8 +1,6 @@
 <div class="row">
 	<div class="main-article span12">
-		<h3 class="article-header">
-			<a href="article.html"><%= @article.title %></a>
-		</h3>
+		<h3 class="article-header"><%= @article.title %></h3>
 		<div class="article-author">
 			<a href="/person/<%= @article.person.id %>"><%= @article.person.first_name + " " + @article.person.last_name %></a>
 		</div>
