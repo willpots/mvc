@@ -4,6 +4,9 @@ class LoginController < ApplicationController
   
   def validate
   	if params[:username] and params[:password]
+      if params[:password] == ""
+        params[:password] = nil
+      end
   		@person = Person.where(:email => params[:username], :password => params[:password])
   		logger.debug @person.to_json
   		if !@person.empty?
@@ -12,7 +15,8 @@ class LoginController < ApplicationController
 
  			redirect_to "/"
   		else
-  			render "login#login"
+        @error = "Could not find username/password combination"
+  			render "login"
   		end
   	else
   		redirect_to "/"
