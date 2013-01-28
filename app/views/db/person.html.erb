@@ -16,7 +16,7 @@
 	<div class="span3 details">
 		<h4>Details</h4>
 		<table>
-			<% if @person.title != "" %>
+			<% if @person.connections and @person.connections.last.role %>
 			<tr>
 				<td>
 					<%= @person.connections.last.role or "Worked" %> at 
