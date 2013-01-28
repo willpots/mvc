@@ -3,9 +3,8 @@ Mvc::Application.routes.draw do
 
   match "check" => "login#validate"
   match "logout" => "login#logout"
-  get "login/register"
-  get "login/create"
-
+  match "register" => "login#register"
+  match "create" => "login#create"
 
 
   get "community" => "db#home"

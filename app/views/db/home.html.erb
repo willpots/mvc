@@ -17,10 +17,14 @@
 		</ul>
 
 	</div>
-	<div class="span4">
 		<h2>Contribute</h2>
+	<% if @user %>
+	<div class="span4">
 		<p><a class="btn" href="/group/new">Add Group</a></p>
 		<p><a class="btn" href="/person/new">Add Person</a></p>
 	</div>
-
+	<% else %>
+		<p><a class="btn" href="/register">Register</a></p>
+		<p>Register in order to contribute to the database</p>
+	<% end %>
 </div>

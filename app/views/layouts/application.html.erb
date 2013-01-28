@@ -12,7 +12,7 @@
 		<header class="main">
 			<div class="login">
 				<% if !session[:user] %>
-				<a href="/login">Login</a>
+				<a href="/login">Login</a> | <a href="/register">Register</a> 
 				<% else %>
 				Hello, <%= @user.first_name %> &nbsp;&nbsp;&nbsp;<a href="/logout">Logout</a>
 				<% end %>

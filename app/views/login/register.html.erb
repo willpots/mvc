@@ -1,2 +1,33 @@
-<h1>Login#register</h1>
-<p>Find me in app/views/login/register.html.erb</p>
+<div class="login-page row">
+	<div class="span12">
+		<h2>Sign Up</h2>
+		<%= form_tag("/create", :method => "post") do %>
+		<% if @error %>
+		<p><%= @error %></p>
+		<% end %>
+		<div class="control-group">
+			<div class="controls">
+				<input type="text" id="first_name" name="first_name" placeholder="First Name">
+				<input type="text" id="last_name" name="last_name" placeholder="Last Name">
+			</div>
+		</div>
+		<div class="control-group ">
+			<div class="controls">
+				<input type="text" id="username" name="username" placeholder="Email">
+				<div class="help-inline">Email is Invalid</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<input type="password" id="password" name="password" placeholder="Password">
+				<div class="help-inline">Incorrect/Invalid Password</div>
+			</div>
+		</div>
+		<%= submit_tag("Register") %>
+		<% end %>
+<!-- 		<h4>- or -</h4>
+		<div class="linked-in-login">
+			<img src="/assets/linkedin_signin_button.png" alt="Login With Linked In">
+		</div>
+	</div>
+ --></div>
