@@ -55,10 +55,14 @@
 	<div class="span4">
 		<h4>Articles</h4>
 		<ul>
+		<% if !@person.articles.empty? %>
 		<% @person.articles.reverse.each do |a| %>
 
 			<li><a href="/article/<%= a.id %>"><%= a.title %></a></li>
 
+		<% end %>
+		<% else %>
+			<li>No articles have been written</li>
 		<% end %>
 		</ul>
 	</div>
@@ -66,10 +70,14 @@
 	<div class="span4">
 		<h4>In The News</h4>
 		<ul>
+		<% if !@person.references.empty? %>
 		<% @person.references.reverse.each do |r| %>
 
 			<li><a href="/article/<%= r.article.id %>"><%= r.article.title %></a></li>
 
+		<% end %>
+		<% else %>
+			<li>Tagged in no articles</li>
 		<% end %>
 		</ul>
 	</div>
