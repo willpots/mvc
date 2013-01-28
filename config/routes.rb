@@ -28,6 +28,7 @@ Mvc::Application.routes.draw do
 
 
 
+  get "article/:id/delete" => "news#delete"
   get "article/create" => "news#create"
   post "article/insert" => "news#insert"
   get "article/:id" => "news#article"

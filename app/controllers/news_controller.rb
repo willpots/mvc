@@ -18,7 +18,16 @@ class NewsController < ApplicationController
 
 
   end
-
+  def delete 
+    logger.debug @user
+    if params[:id] and @user and @user.author
+      @article = Article.find(params[:id])
+      @article.destroy
+      redirect_to "/"
+    else
+      redirect_to "/"
+    end
+  end
   def insert
   	@article = Article.new
 

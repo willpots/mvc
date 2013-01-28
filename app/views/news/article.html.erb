@@ -19,5 +19,10 @@
 			<% end %>
 			</ul>
 		</div>
+		<% if @user and @user.author %>
+		<div class="article-delete">
+			<a href="/article/<%= @article.id %>/delete" class="btn">Delete this Article</a>	
+		</div>
+		<% end %>
 	</div>
 </div>
