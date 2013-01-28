@@ -6,9 +6,15 @@ class DbController < ApplicationController
 
   def group
     @group = Group.find(params[:id])
+    if !@group
+      redirect_to "/"
+    end
   end
   def person
     @person = Person.find(params[:id])
+    if !@person
+      redirect_to "/"
+    end
   end
 
 
@@ -47,13 +53,14 @@ class DbController < ApplicationController
         @group.connections.each do |c|
           c.destroy
         end
-        params[:persons].each do |a|
-          con = Connection.new
-          con.group_id = @group.id
-          con.person_id = a
-          con.save
+        if params[:persons]
+          params[:persons].each do |a|
+            con = Connection.new
+            con.group_id = @group.id
+            con.person_id = a
+            con.save
+          end
         end
-
 
         redirect_to "/group/"+@group.id.to_s
       else
@@ -89,11 +96,13 @@ class DbController < ApplicationController
         @group.connections.each do |c|
           c.destroy
         end
-        params[:persons].each do |a|
-          con = Connection.new
-          con.group_id = @group.id
-          con.person_id = a
-          con.save
+        if params[:persons]
+          params[:persons].each do |a|
+            con = Connection.new
+            con.group_id = @group.id
+            con.person_id = a
+            con.save
+          end
         end
         redirect_to "/group/"+@group.id.to_s
       else
@@ -137,11 +146,13 @@ class DbController < ApplicationController
           end
         end
 
-        params[:groups].each do |a|
-          con = Connection.new
-          con.person_id = @person.id
-          con.group_id = a
-          con.save
+        if params[:groups]
+          params[:groups].each do |a|
+            con = Connection.new
+            con.person_id = @person.id
+            con.group_id = a
+            con.save
+          end
         end
         redirect_to "/person/"+@person.id.to_s
       else
@@ -173,11 +184,13 @@ class DbController < ApplicationController
             @person.save
           end
         end
-        params[:groups].each do |a|
-          con = Connection.new
-          con.person_id = @person.id
-          con.group_id = a
-          con.save
+        if params[:groups]
+          params[:groups].each do |a|
+            con = Connection.new
+            con.person_id = @person.id
+            con.group_id = a
+            con.save
+          end
         end
         redirect_to "/person/"+@person.id.to_s
       else
