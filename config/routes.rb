@@ -20,7 +20,12 @@ Mvc::Application.routes.draw do
 
 
 
+  get "person/new" => "db#new_person"
+  match "person/new/save" => "db#create_person"
   get "person/:id" => "db#person"
+  match "person/:id/save" => "db#update_person"
+  get "person/:id/edit" => "db#edit_person"
+
 
 
 

@@ -2,7 +2,9 @@
 
 	<div class="span12">
 		<div class="page-image">
-			<!-- <img src="http://www.crunchbase.com/assets/images/resized/0019/7996/197996v2-max-250x250.png" alt="Strabo" height="20"> -->
+			<% if @group.picture %>
+			<img src="https://s3.amazonaws.com/middvc/<%= @group.picture %>" alt="" height="30">
+			<% end %>
 		</div>
 		<h2><%= @group.name %></h2>
 		<% if @user %>
@@ -112,7 +114,7 @@
 			<% @group.connections.each do |c| %>
 			<tr>
 				<td>
-					<a href="#"><%= c.person.first_name %> <%= c.person.last_name%></a>
+					<a href="/person/<%= c.person.id %>"><%= c.person.first_name %> <%= c.person.last_name%></a>
 				</td>
 				<td><%= c.role %></td>
 				<td><%= c.person.class_year %></td>

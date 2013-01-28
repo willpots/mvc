@@ -1,13 +1,13 @@
 <div class="row edit-company">
 	<div class="span12">
-		<%= form_for @group, :url => { :action => "create_person" }, :html => {:class => "nifty_form"} do |f| %>
+		<%= form_for @person, :url => { :action => "create_person" }, :html => {:class => "nifty_form", :multipart => true} do |f| %>
 			<h2>Create <%= f.text_field :first_name, :placeholder => "First Name" %> <%= f.text_field :last_name, :placeholder => "Last Name" %></h2>
- <% if @group.errors.any? %>
+ <% if @person.errors.any? %>
     <div id="error_explanation">
-      <h5><%= pluralize(@group.errors.count, "error") %> prohibited this page from being saved:</h5>
+      <h5><%= pluralize(@person.errors.count, "error") %> prohibited this page from being saved:</h5>
 
       <ul>
-      <% @group.errors.full_messages.each do |msg| %>
+      <% @person.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -15,14 +15,21 @@
   <% end %>
   			<h4>Details</h4>
 			<p>
-		        <select data-placeholder="Add Members" class="chzn-select" id="class_year" name="class_year" style="width:350px;">
+		        <select data-placeholder="Add Members" class="chzn-select" id="class_year" name="person[class_year]" style="width:350px;">
 		        	<% (1900..2018).each do |y| %>
-		        	<option value="<%= y %>" selected><%= y %></option>
-		        	<option value="<%= y %>.5" selected><%= y %>.5</option>
+			        	<% if y.to_s == @person.class_year %>
+			        	<option value="<%= y %>" selected><%= y %></option>
+			        	<% else %>
+			        	<option value="<%= y %>"><%= y %></option>
+			        	<% end %>
+			        	<% if y.to_s+".5" == @person.class_year.to_s %>
+			        	<option value="<%= y %>.5" selected><%= y %>.5</option>
+			        	<% else %>
+			        	<option value="<%= y %>.5"><%= y %></option>
+			        	<% end %>
 		        	<% end %>
 		        </select>				
 		        <%= f.text_field :email, :placeholder => "support@example.com" %>
-				<%= f.text_field :phone, :placeholder => "800-555-1232" %>
 				Twitter: @<%= f.text_field :twitter, :placeholder => "Twitter @username", :style =>"width:100px;" %>
 			</p>
 			<p><%= f.text_area :description , :rows => "10", :style =>"width:800px;"%></p>
@@ -38,6 +45,8 @@
 		        	<% end %>
 		        </select>
 			</p>
+			<h4>Picture</h4>
+			<input type="file" id="pictureField" name="pictureField">
 
 			<p><%= f.submit "Create", :class => "btn" %></p>
 

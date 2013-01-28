@@ -1,6 +1,6 @@
 <div class="row edit-company">
 	<div class="span12">
-		<%= form_for @group, :url => { :action => "create_group" }, :html => {:class => "nifty_form"} do |f| %>
+		<%= form_for @group, :url => { :action => "create_group" }, :html => {:class => "nifty_form", :multipart => true} do |f| %>
 			<h2>Edit <%= f.text_field :name, :placeholder => "Group Name" %></h2>
  <% if @group.errors.any? %>
     <div id="error_explanation">
@@ -54,6 +54,8 @@
 		        	<% end %>
 		        </select>
 			</p>
+			<h4>Picture</h4>
+			<input type="file" id="pictureField" name="pictureField">
 
 			<p><%= f.submit "Create", :class => "btn" %></p>
 		<% end %>

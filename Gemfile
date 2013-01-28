@@ -10,7 +10,7 @@ gem 'pg'
 gem 'oauth'
 
 gem 'localtunnel'
-
+gem 'aws-s3'
 gem 'linkedin'
 
 
@@ -26,5 +26,10 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+
+gem 'feedzirra'
+
+gem 'whenever', :require => false
+
 
 gem 'jquery-rails'

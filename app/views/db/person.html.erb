@@ -2,7 +2,10 @@
 
 	<div class="span12">
 		<div class="page-image">
-			<!-- <img src="http://www.crunchbase.com/assets/images/resized/0019/7996/197996v2-max-250x250.png" alt="Strabo" height="20"></div> -->
+			<% if @person.picture %>
+			<img src="https://s3.amazonaws.com/middvc/<%= @person.picture %>" alt="" height="30">
+			<% end %>
+		</div>
 		<h2><%= @person.first_name %> <%= @person.last_name %></h2>
 		<% if @user %>
 			<a href="/person/<%= @person.id %>/edit" class="btn">Edit Page</a>

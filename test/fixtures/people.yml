@@ -4,8 +4,66 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+will:
+	id: 1
+	first_name: "Will"
+	last_name: "Potter"
+	email: "willstonepotter@gmail.com"
+	class_year: "2014.5"
+	author: true
+	role: "Entrepreneur"
+	twitter: "@willpots"
+	password: "asdf"
+
+nate:
+	id: 2
+	first_name: "Nate"
+	last_name: "Beatty"
+	email: "natebeatty@gmail.com"
+	class_year: "2013.5"
+	author: true
+	role: "Entrepreneur"
+	twitter: "@tnbeatty"
+	password: "asdf"
+
+brian:
+	id: 3
+	first_name: "Brian"
+	last_name: "Sirkia"
+	email: "bsirkia@gmail.com"
+	class_year: "2012.5"
+	author: true
+	role: "Entrepreneur"
+	twitter: "@bsirkia"
+	password: "asdf"
+
+teddy:
+	id: 4
+	first_name: "Teddy"
+	last_name: "Knox"
+	email: "teddyknox@gmail.com"
+	class_year: "2013.5"
+	author: true
+	role: "Entrepreneur"
+	twitter: "@teddyknox"
+	password: "asdf"
+
+liz:
+	id: 5
+	first_name: "Liz"
+	last_name: "Robinson"
+	email: "elizabet@middlebury.edu"
+	class_year: "1984"
+	author: true
+	role: "Mentor"
+	password: "asdf"
+
+chandler:
+	id: 6
+	first_name: "Chandler"
+	last_name: "Koglmeier"
+	email: ""
+	class_year: "2009"
+	author: true
+	role: "Mentor"
+	password: "asdf"

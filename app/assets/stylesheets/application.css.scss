@@ -116,6 +116,9 @@ header.main {
 	height: 170px;
 	overflow: hidden;
 	.article-header {
+		height: 40px;
+		overflow: hidden;
+		text-overflow:ellipsis;
 		a {
 			color: inherit;
 		}
@@ -128,7 +131,9 @@ header.main {
 		font-size: 14px;
 	}
 	.article-description {
-
+		overflow: hidden;
+		height: 80px;
+		text-overflow:ellipsis;
 	}
 }
 .main-article {
@@ -199,7 +204,7 @@ ul.no-style {
 			float: right;
 			padding: 5px 25px;
 			img {
-				height: 60px;
+				height: 75px;
 				width: auto;
 			}
 		}
