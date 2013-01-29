@@ -16,6 +16,7 @@
   			<h4>Details</h4>
 			<p>
 		        <select data-placeholder="Add Members" class="chzn-select" id="class_year" name="person[class_year]" style="width:350px;">
+		        	<option value="">No Class Year</option>
 		        	<% (1900..2018).each do |y| %>
 			        	<% if y.to_s == @person.class_year %>
 			        	<option value="<%= y %>" selected><%= y %></option>
@@ -34,21 +35,117 @@
 			</p>
 			<p><%= f.text_area :description , :rows => "10", :style =>"width:800px;"%></p>
 			<h4>Groups</h4>
-			<p>
-		        <select data-placeholder="Add Groups" class="chzn-select" id="groups" name="groups[]" multiple style="width:350px;">
+				<div class="connections">
+				<% @person.connections.each do |c|
+				if c.start_date
+					start_month = c.start_date.to_date.month
+					start_year = c.start_date.to_date.year
+				end
+				if c.end_date
+					end_month = c.end_date.to_date.month
+					end_year = c.end_date.to_date.year
+				end %>
+				<div class="connection-input">
+				<input type="hidden" name="connection[][id]" value="<%= c.id %>">
+				<input type="text" name="connection[][role]" value="<%= c.role %>" placeholder="Role"> at 
+		        <select data-placeholder="Add Groups" class="chzn-select form-elt" name="connection[][group]" style="width:250px;">
 		        	<% @groups.each do |p| %>
-		        	<% if @person.groups.include? p %>
+		        	<% if p == c.group %>
 		        	<option value="<%= p.id %>" selected><%= p.name %></option>
 		        	<% else %>
 		        	<option value="<%= p.id %>"><%= p.name %></option>
 		        	<% end %>
 		        	<% end %>
+		        </select> from 
+		        <select data-placeholder="Mon" class="chzn-select form-elt" name="connection[][start_month]" style="width:60px;">
+		        	<option value=""></option>
+		        	<% (1..12).each do |m| %>
+		        		<% if m == start_month %>
+		        		<option value="<%= m %>" selected><%= m %></option>
+		        		<% else %>
+		        		<option value="<%= m %>"><%= m %></option>
+		        		<% end %>
+		        	<% end %>
 		        </select>
-			</p>
+		        <select data-placeholder="Year" class="chzn-select form-elt" name="connection[][start_year]" style="width:70px;">
+		        	<option value=""></option>
+		        	<% (1900..2013).each do |m| %>
+		        		<% if m == start_year %>
+		        		<option value="<%= m %>" selected><%= m %></option>
+		        		<% else %>
+		        		<option value="<%= m %>"><%= m %></option>
+		        		<% end %>
+		        	<% end %>
+		        </select>
+				to 
+		        <select data-placeholder="Mon" class="chzn-select form-elt" name="connection[][end_month]" style="width:60px;">
+		        	<option value=""></option>
+		        	<% (1..12).each do |m| %>
+		        		<% if m == end_month %>
+		        		<option value="<%= m %>" selected><%= m %></option>
+		        		<% else %>
+		        		<option value="<%= m %>"><%= m %></option>
+		        		<% end %>
+		        	<% end %>
+		        </select>
+		        <select data-placeholder="Year" class="chzn-select form-elt" name="connection[][end_year]" style="width:70px;">
+		        	<option value=""></option>
+		        	<% (1900..2013).each do |m| %>
+		        		<% if m == end_year %>
+		        		<option value="<%= m %>" selected><%= m %></option>
+		        		<% else %>
+		        		<option value="<%= m %>"><%= m %></option>
+		        		<% end %>
+		        	<% end %>
+		        </select>
+				<i class="icon-remove"></i>
+			    </div>
+		        <% end %>
+
+		        <div class="connection-input">
+				<input type="hidden" name="connection[][id]">
+				<input type="text" name="connection[][role]" value="" placeholder="Role"> at 
+		        <select data-placeholder="Add Groups" class="chzn-select form-elt" class="groups" name="connection[][group" style="width:250px;">
+		        	<option value="">No Group Selected</option>
+		        	<% @groups.each do |p| %>
+		        	<option value="<%= p.id %>"><%= p.name %></option>
+		        	<% end %>
+		        </select> from 
+		        <select data-placeholder="Mon" class="chzn-select form-elt" name="connection[][start_month]" style="width:60px;">
+		        	<option value=""></option>
+		        	<% (1..12).each do |m| %>
+		        		<option value="<%= m %>"><%= m %></option>
+		        	<% end %>
+		        </select>
+		        <select data-placeholder="Year" class="chzn-select form-elt" name="connection[][start_year]" style="width:70px;">
+		        	<option value=""></option>
+		        	<% (1900..2013).each do |m| %>
+		        		<option value="<%= m %>"><%= m %></option>
+		        	<% end %>
+		        </select>
+				to 
+		        <select data-placeholder="Mon" class="chzn-select form-elt" name="connection[][end_month]" style="width:60px;">
+		        	<option value=""></option>
+		        	<% (1..12).each do |m| %>
+		        		<option value="<%= m %>"><%= m %></option>
+		        	<% end %>
+		        </select>
+		        <select data-placeholder="Year" class="chzn-select form-elt" name="connection[][end_year]" style="width:70px;">
+		        	<option value=""></option>
+		        	<% (1900..2013).each do |m| %>
+		        		<option value="<%= m %>"><%= m %></option>
+		        	<% end %>
+		        </select>
+				<i class="icon-remove"></i>
+			    </div></div>
+			    <div>
+			    	<a class="add-position btn">Add Position</a>
+			    </div>
+
 			<h4>Picture</h4>
 			<input type="file" id="pictureField" name="pictureField">
 
-			<p><%= f.submit "Create", :class => "btn" %></p>
+			<p><%= f.submit "Update", :class => "btn" %></p>
 
 
 			 <!-- type: string phone: string, founded: string, : string, : string, vcet: string, : string, : string -->

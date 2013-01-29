@@ -71,6 +71,7 @@ class DbController < ApplicationController
 
   def update_group
     if params[:group]
+      @persons = Person.all
       @group = Group.find(params[:id])
       if @group.update_attributes params[:group]
 
@@ -104,6 +105,8 @@ class DbController < ApplicationController
             con.save
           end
         end
+
+
         redirect_to "/group/"+@group.id.to_s
       else
         render "edit_group"
@@ -124,9 +127,7 @@ class DbController < ApplicationController
     if params[:person]
       @person = Person.new(params[:person])
       if @person.save
-        @person.connections.each do |c|
-          c.destroy
-        end
+
 
         # Picture Uploading Code
         if params[:pictureField]
@@ -146,12 +147,36 @@ class DbController < ApplicationController
           end
         end
 
-        if params[:groups]
-          params[:groups].each do |a|
-            con = Connection.new
-            con.person_id = @person.id
-            con.group_id = a
-            con.save
+        # Connection Code
+        # Check to see if the connection has been deleted
+        @person.connections.each do |c|
+          exists = false
+          if params[:connection]
+            params[:connection].each do |d|
+              if d[:id] == c.id
+                exists = true
+              end
+            end
+          end
+          if !exists
+            c.destroy
+          end
+        end
+        if params[:connection]
+          params[:connection].each do |c|
+            if c[:role] != "" and c[:group] != ""
+              if c[:id] and c[:id] != ""
+                con = Connection.find(c[:id])
+              else
+                con = Connection.new
+              end
+              con.role = c[:role]
+              con.group_id = c[:group]
+              con.person_id = @person.id
+              con.start_date = Date::strptime(c[:start_month]+"/"+c[:start_year], "%m/%Y").to_datetime
+              con.end_date = Date::strptime(c[:end_month]+"/"+c[:end_year], "%m/%Y").to_datetime
+              con.save
+            end
           end
         end
         redirect_to "/person/"+@person.id.to_s
@@ -164,9 +189,7 @@ class DbController < ApplicationController
     if params[:person]
       @person = Person.find(params[:id])
       if @person.update_attributes params[:group]
-        @person.connections.each do |c|
-          c.destroy
-        end
+
         # Picture Uploading Code
         if params[:pictureField]
           fileExt=false
@@ -184,12 +207,36 @@ class DbController < ApplicationController
             @person.save
           end
         end
-        if params[:groups]
-          params[:groups].each do |a|
-            con = Connection.new
-            con.person_id = @person.id
-            con.group_id = a
-            con.save
+        # Connection Code
+        # Check to see if the connection has been deleted
+        @person.connections.each do |c|
+          exists = false
+          if params[:connection]
+            params[:connection].each do |d|
+              if d[:id] == c.id
+                exists = true
+              end
+            end
+          end
+          if !exists
+            c.destroy
+          end
+        end
+        if params[:connection]
+          params[:connection].each do |c|
+            if c[:role] != "" and c[:group] != ""
+              if c[:id] and c[:id] != ""
+                con = Connection.find(c[:id])
+              else
+                con = Connection.new
+              end
+              con.role = c[:role]
+              con.group_id = c[:group]
+              con.person_id = @person.id
+              con.start_date = Date::strptime(c[:start_month]+"/"+c[:start_year], "%m/%Y").to_datetime
+              con.end_date = Date::strptime(c[:end_month]+"/"+c[:end_year], "%m/%Y").to_datetime
+              con.save
+            end
           end
         end
         redirect_to "/person/"+@person.id.to_s
