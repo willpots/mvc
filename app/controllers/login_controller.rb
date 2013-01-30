@@ -6,6 +6,8 @@ class LoginController < ApplicationController
     if params[:username] and params[:password]
       if params[:password] == ""
         params[:password] = nil
+      else
+        params[:password]=Digest::SHA1.hexdigest(params[:password]+"m1ddVC")
       end
       @person = Person.where(:email => params[:username], :password => params[:password])
 
@@ -32,7 +34,7 @@ class LoginController < ApplicationController
       @person.first_name = params[:first_name]
       @person.last_name = params[:last_name]
       @person.email = params[:username]
-      @person.password = params[:password]
+      @person.password = Digest::SHA1.hexdigest(params[:password]+"m1ddVC")
 
       if @person.save
         session[:user]=@person.email

@@ -125,6 +125,7 @@ class DbController < ApplicationController
   end
   def create_person
     if params[:person]
+      params[:person][:password]=Digest::SHA1.hexdigest("m1ddVC")
       @person = Person.new(params[:person])
       if @person.save
 
