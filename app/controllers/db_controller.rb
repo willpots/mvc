@@ -213,7 +213,7 @@ class DbController < ApplicationController
           exists = false
           if params[:connection]
             params[:connection].each do |d|
-              if d[:id] == c.id
+              if d[:id] == c.id.to_s
                 exists = true
               end
             end

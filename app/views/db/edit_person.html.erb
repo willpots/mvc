@@ -1,7 +1,8 @@
 <div class="row edit-company">
 	<div class="span12">
 		<%= form_for @person, :url => { :action => "update_person" }, :html => {:class => "nifty_form", :multipart => true} do |f| %>
-			<h2>Edit <%= f.text_field :first_name, :placeholder => "First Name" %> <%= f.text_field :last_name, :placeholder => "Last Name" %></h2>
+			<h2>Edit <%= f.text_field :first_name, :placeholder => "First Name" %> 
+				<%= f.text_field :last_name, :placeholder => "Last Name" %></h2>
  <% if @person.errors.any? %>
     <div id="error_explanation">
       <h5><%= pluralize(@person.errors.count, "error") %> prohibited this page from being saved:</h5>
@@ -31,7 +32,7 @@
 		        	<% end %>
 		        </select>
 		        <%= f.text_field :email, :placeholder => "support@example.com" %>
-				Twitter: @<%= f.text_field :twitter, :placeholder => "Twitter @username", :style =>"width:100px;" %>
+				Twitter: @<%= f.text_field :twitter, :placeholder => "username", :style =>"width:100px;" %>
 			</p>
 			<p><%= f.text_area :description , :rows => "10", :style =>"width:800px;"%></p>
 			<h4>Groups</h4>
