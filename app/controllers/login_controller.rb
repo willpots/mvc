@@ -4,11 +4,8 @@ class LoginController < ApplicationController
 
   def validate
     if params[:username] and params[:password]
-      if params[:password] == ""
-        params[:password] = nil
-      else
-        params[:password]=Digest::SHA1.hexdigest(params[:password]+"m1ddVC")
-      end
+
+      params[:password]=Digest::SHA1.hexdigest(params[:password]+"m1ddVC")
       @person = Person.where(:email => params[:username], :password => params[:password])
 
       if !@person.empty?
