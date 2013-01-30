@@ -188,7 +188,7 @@ class DbController < ApplicationController
   def update_person
     if params[:person]
       @person = Person.find(params[:id])
-      if @person.update_attributes params[:group]
+      if @person.update_attributes params[:person]
 
         # Picture Uploading Code
         if params[:pictureField]

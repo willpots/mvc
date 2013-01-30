@@ -16,7 +16,8 @@
   <% end %>
   			<h4>Details</h4>
 			<p>
-		        <select data-placeholder="Add Members" class="chzn-select" id="class_year" name="person[class_year]" style="width:350px;">
+				Class Year: 
+		        <select data-placeholder="Class Year" class="chzn-select" id="class_year" name="person[class_year]" style="width:100px;">
 		        	<option value="">No Class Year</option>
 		        	<% (1900..2018).each do |y| %>
 			        	<% if y.to_s == @person.class_year %>
@@ -32,7 +33,10 @@
 		        	<% end %>
 		        </select>
 		        <%= f.text_field :email, :placeholder => "support@example.com" %>
+			</p>
+			<p>
 				Twitter: @<%= f.text_field :twitter, :placeholder => "username", :style =>"width:100px;" %>
+				LinkedIn URL: <%= f.text_field :linked_in, :placeholder => "Linked_In URL", :style =>"width:100px;" %>
 			</p>
 			<p><%= f.text_area :description , :rows => "10", :style =>"width:800px;"%></p>
 			<h4>Groups</h4>

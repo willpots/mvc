@@ -4,7 +4,6 @@
 	<meta charset="UTF-8">
 	<title>Midd Ventures</title>
 	<%= stylesheet_link_tag    "application", :media => "all" %>
-	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
 
 <body>
@@ -47,9 +46,12 @@
 		</footer>
 	</div>
 
+	<%= javascript_include_tag "application" %>
 	<script type="text/javascript"> 
-	$(".chzn-select").chosen(); $(".chzn-select-deselect").chosen({allow_single_deselect:true});
-
+	$(document).ready(function() {
+		$(".chzn-select").chosen(); $(".chzn-select-deselect").chosen({allow_single_deselect:true});
+		$('#body').wysihtml5()
+	});
 
 	</script>
 
