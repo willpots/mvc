@@ -334,6 +334,12 @@ footer.main {
 		.btn-group {
 			margin:0;
 			padding:0 2px;
+			.btn {
+				&:first-child,
+				&:last-child {
+					border-radius: 0;
+				}
+			}
 		}
 	}
 }
