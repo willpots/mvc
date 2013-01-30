@@ -7,12 +7,12 @@
 
 <div class="span6">
 	<div class="article row c<%= i %>">
-		<h3 class="article-header"><a href="article/<%= a.id %>"><%= a.title %></a></h3>
+		<h3 class="article-header"><a href="/article/<%= a.id %>"><%= a.title %></a></h3>
 		<div class="article-author">
 			<a href="/person/<%= a.person.id %>"><%= a.person.first_name + " " + a.person.last_name %></a>
 		</div>
 		<div class="article-description">
-			<%= text = ActionView::Base.full_sanitizer.sanitize(a.body[0..400]) %>
+			<%= text = ActionView::Base.full_sanitizer.sanitize(a.body[0..400]) %>...<a href="/article/<%= a.id %>">Read More</a>
 
 		</div>
 	</div>
