@@ -1,6 +1,12 @@
 #Things to Do
 
 
+
+###Codebase
 * Consolidate New/Edit Forms
+
+
 * Allow termination date of connections to be "present"
-* Implement WYSIWYG editor for writing posts
+
+* Retreive Password Option
+* 

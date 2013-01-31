@@ -50,17 +50,17 @@ class DbController < ApplicationController
           end
         end
 
-        @group.connections.each do |c|
-          c.destroy
-        end
-        if params[:persons]
-          params[:persons].each do |a|
-            con = Connection.new
-            con.group_id = @group.id
-            con.person_id = a
-            con.save
-          end
-        end
+        # @group.connections.each do |c|
+        #   c.destroy
+        # end
+        # if params[:persons]
+        #   params[:persons].each do |a|
+        #     con = Connection.new
+        #     con.group_id = @group.id
+        #     con.person_id = a
+        #     con.save
+        #   end
+        # end
 
         redirect_to "/group/"+@group.id.to_s
       else
@@ -94,17 +94,17 @@ class DbController < ApplicationController
           end
         end
 
-        @group.connections.each do |c|
-          c.destroy
-        end
-        if params[:persons]
-          params[:persons].each do |a|
-            con = Connection.new
-            con.group_id = @group.id
-            con.person_id = a
-            con.save
-          end
-        end
+        # @group.connections.each do |c|
+        #   c.destroy
+        # end
+        # if params[:persons]
+        #   params[:persons].each do |a|
+        #     con = Connection.new
+        #     con.group_id = @group.id
+        #     con.person_id = a
+        #     con.save
+        #   end
+        # end
 
 
         redirect_to "/group/"+@group.id.to_s
