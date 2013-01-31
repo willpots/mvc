@@ -1,20 +1,20 @@
 <div class="db-company row">
 	<div class="span7">
 		<h2>Groups</h2>
-		<ul>
-		<% @groups.each do |g| %>
-		<li><a href="/group/<%= g.id %>"><%= g.name %></a></li>
-		<% end %>
-	
-		</ul>
+	        <select data-placeholder="Group" class="chzn-select" id="group_select" style="width:300px;" ONCHANGE="location = this.options[this.selectedIndex].value;">
+			<% @groups.each do |g| %>
+	        	<option value="/group/<%= g.id %>/"><%= g.name %></option>
+			<% end %>
+	        </select>
+
 
 		<h2>People</h2>
-		<ul>
-		<% @people.each do |g| %>
-		<li><a href="/person/<%= g.id %>"><%= g.first_name %> <%= g.last_name %></a></li>
-		<% end %>
-	
-		</ul>
+	        <select data-placeholder="Person" class="chzn-select" id="person_select" style="width:300px;" ONCHANGE="location = this.options[this.selectedIndex].value;">
+			<% @people.each do |p| %>
+	        	<option value="/person/<%= p.id %>/"><%= p.first_name %> <%= p.last_name %></option>
+			<% end %>
+	        </select>
+
 
 	</div>
 		<h2>Contribute</h2>
