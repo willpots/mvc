@@ -42,18 +42,7 @@
 				<%= f.text_field :video, :placeholder => "Youtube or Vimeo URI" %>				
 			</p>
 			<p><%= f.text_area :description , :rows => "10", :style =>"width:800px;"%></p>
-<!-- 			<h4>Members</h4>
-			<p>
-		        <select data-placeholder="Add Members" class="chzn-select" id="persons" name="persons[]" multiple style="width:350px;">
-		        	<% @people.each do |p| %>
-		        	<% if @group.persons.include? p %>
-		        	<option value="<%= p.id %>" selected><%= p.first_name %> <%= p.last_name %></option>
-		        	<% else %>
-		        	<option value="<%= p.id %>"><%= p.first_name %> <%= p.last_name %></option>
-		        	<% end %>
-		        	<% end %>
-		        </select>
-			</p> -->
+
 			<h4>Picture</h4>
 			<input type="file" id="pictureField" name="pictureField">
 
