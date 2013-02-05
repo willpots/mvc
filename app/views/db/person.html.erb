@@ -27,14 +27,14 @@
 			<% if @person.twitter and @person.twitter != "" %>
 			<tr>
 				<td>
-					<a href="http://twitter.com/<%= @person.twitter %>" target="_blank"><i class="icon-twitter icon-large"></i> @<%= @person.twitter %></a>
+					<a href="http://twitter.com/<%= @person.twitter %>" target="_blank" class="btn btn-info"><i class="icon-twitter icon-large"></i> @<%= @person.twitter %></a>
 				</td>
 			</tr>
 			<% end %>
 			<% if @person.linked_in and @person.linked_in != "" %>
 			<tr>
 				<td>
-					<a href="<%= @person.linked_in %>" target="_blank"><i class="icon-linkedin icon-large"></i> LinkedIn</a>
+					<a href="<%= @person.linked_in %>" target="_blank" class="btn btn-info"><i class="icon-linkedin icon-large"></i> LinkedIn</a>
 				</td>
 			</tr>
 			<% end %>
