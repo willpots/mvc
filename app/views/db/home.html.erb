@@ -1,7 +1,8 @@
 <div class="db-company row">
 	<div class="span7">
 		<h2>Groups</h2>
-	        <select data-placeholder="Group" class="chzn-select" id="group_select" style="width:300px;" ONCHANGE="location = this.options[this.selectedIndex].value;">
+	        <select data-placeholder="Select a group..." class="chzn-select" id="group_select" style="width:300px;" ONCHANGE="location = this.options[this.selectedIndex].value;">
+	        	<option selected></option>
 			<% @groups.each do |g| %>
 	        	<option value="/group/<%= g.id %>/"><%= g.name %></option>
 			<% end %>
@@ -9,7 +10,8 @@
 
 
 		<h2>People</h2>
-	        <select data-placeholder="Person" class="chzn-select" id="person_select" style="width:300px;" ONCHANGE="location = this.options[this.selectedIndex].value;">
+	        <select data-placeholder="Select a person..." class="chzn-select" id="person_select" style="width:300px;" ONCHANGE="location = this.options[this.selectedIndex].value;">
+	        	<option selected></option>
 			<% @people.each do |p| %>
 	        	<option value="/person/<%= p.id %>/"><%= p.first_name %> <%= p.last_name %></option>
 			<% end %>

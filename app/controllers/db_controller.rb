@@ -5,21 +5,25 @@ class DbController < ApplicationController
   end
 
   def group
-    @group = Group.find(params[:id])
+    @group = Group.find_by_id(params[:id])
     if !@group
-      redirect_to "/"
+      redirect_to "/404"
+    else
+      @title = @group.name + " | Midd Ventures"
     end
   end
   def person
-    @person = Person.find(params[:id])
+    @person = Person.find_by_id(params[:id])
     if !@person
-      redirect_to "/"
+      redirect_to "/404"
+    else
+      @title = @person.first_name + " " + @person.last_name + " | Midd Ventures"
     end
   end
 
 
   def edit_group
-    @group = Group.find(params[:id])
+    @group = Group.find_by_id(params[:id])
     @people = Person.all
   end
   def new_group

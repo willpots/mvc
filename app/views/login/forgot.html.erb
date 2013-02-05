@@ -1,0 +1,14 @@
+<div class="login-page row">
+	<div class="span12">
+		<h1>Recover Password</h1>
+		<%= form_tag("/reset_password", :method => "post") do %>
+		<div class="control-group ">
+			<div class="controls">
+				<input type="text" id="username" name="username" placeholder="Email">
+				<div class="help-inline">Email is Invalid</div>
+			</div>
+		</div>
+		<%= submit_tag("Recover Password", :class =>"btn") %>
+		<% end %>
+	</div>
+</div>

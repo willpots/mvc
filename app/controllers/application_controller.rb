@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :verify
   def verify
+    @title = "Midd Ventures"
     if session[:user_id]
       @user = Person.find(session[:user_id])
     end

@@ -1,12 +1,21 @@
 Mvc::Application.routes.draw do
+  
+  get "about" => "about#index"
+
+  get "403" => "error#403"
+  get "404" => "error#404"
+
   match "login" => "login#login"
 
   match "check" => "login#validate"
   match "logout" => "login#logout"
   match "register" => "login#register"
   match "create" => "login#create"
-
-
+  match "forgot" => "login#forgot"
+  match "reset_password" => "login#reset_password"
+  match "recover/:token" => "login#recover"
+  match "change_password" => "login#change_password"
+  
   get "community" => "db#home"
 
 

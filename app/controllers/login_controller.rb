@@ -36,6 +36,7 @@ class LoginController < ApplicationController
       if @person.save
         session[:user]=@person.email
         session[:user_id]=@person.id
+        UserMailer.welcome_email(@person).deliver
 
         redirect_to "/person/"+ @person.id.to_s + "/edit"
       else
@@ -50,5 +51,44 @@ class LoginController < ApplicationController
   def logout
     reset_session
     redirect_to "/"
+  end
+
+  def forgot
+
+  end
+
+  def reset_password
+    if params[:username]
+      @person = Person.find_by_email(params[:username])
+      if @person
+        UserMailer.recover_password(@person).deliver
+      end
+    end
+  end
+
+  def recover
+    if params[:token]
+      @token = params[:token]
+      @person = Person.find_by_password_token params[:token]
+      if @person
+
+      else
+        redirect_to "404"
+      end
+    else
+      redirect_to "404"
+    end
+  end
+  def change_password
+    if params[:token] and params[:password] and params[:password2] and params[:password] == params[:password2]
+      @person = Person.find_by_password_token(params[:token])
+      if @person
+        @person.password = Digest::SHA1.hexdigest(params[:password]+"m1ddVC")
+        @person.save
+        redirect_to "/login"
+      end
+    else
+      redirect_to "404"
+    end
   end
 end
