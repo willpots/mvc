@@ -1,3 +1,5 @@
+require 'net/http'
+
 class LoginController < ApplicationController
   def login
   end
@@ -37,6 +39,17 @@ class LoginController < ApplicationController
         session[:user]=@person.email
         session[:user_id]=@person.id
         UserMailer.welcome_email(@person).deliver
+
+
+        # user="middventures"
+        # pass="MiddleburyVentures13"
+        # string='http://sendgrid.com/api/newsletter/lists/email/add.json?list=Members&data={"email":"'+URI::escape(@person.email)+'","name":"'+URI::escape(@person.first_name)+" "+URI::escape(@person.last_name)+'"}&api_user='+user+'&api_key='+pass
+        # url = URI.parse(URI.encode(string.strip))
+        # req = Net::HTTP::Get.new(url.path)
+        # res = Net::HTTP.start(url.host, url.port) {|http|
+        #   http.request(req)
+        # }
+        # logger.debug res.body
 
         redirect_to "/person/"+ @person.id.to_s + "/edit"
       else
