@@ -85,6 +85,8 @@ class LoginController < ApplicationController
       if @person
         @person.password = Digest::SHA1.hexdigest(params[:password]+"m1ddVC")
         @person.save
+        @person.password_token = nil
+        @person.save
         redirect_to "/login"
       end
     else
