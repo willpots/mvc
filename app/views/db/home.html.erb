@@ -1,7 +1,7 @@
 <div class="db-company row">
 	<div class="span7">
-		<h2>Groups</h2>
-	        <select data-placeholder="Select a group..." class="chzn-select" id="group_select" style="width:300px;" ONCHANGE="location = this.options[this.selectedIndex].value;">
+		<h2>Ventures</h2>
+	        <select data-placeholder="Select a venture..." class="chzn-select" id="group_select" style="width:300px;" ONCHANGE="location = this.options[this.selectedIndex].value;">
 	        	<option selected></option>
 			<% @groups.each do |g| %>
 	        	<option value="/group/<%= g.id %>/"><%= g.name %></option>
