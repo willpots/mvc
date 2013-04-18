@@ -12,7 +12,7 @@
 			<a href="/person/<%= a.person.id %>"><%= a.person.first_name + " " + a.person.last_name %></a>
 		</div>
 		<div class="article-description">
-			<%= text = ActionView::Base.full_sanitizer.sanitize(a.body.gsub('&nbsp;',' '))[0..230] %>... <a href="/article/<%= a.id %>">Read More</a>
+			<%= text = ActionView::Base.full_sanitizer.sanitize(a.body.gsub('&nbsp;',' ').gsub('&amp;', '&'))[0..230] %>... <a href="/article/<%= a.id %>">Read More</a>
 
 		</div>
 	</div>
